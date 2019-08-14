@@ -23,3 +23,7 @@ type Transaction struct {
 func (transaction Transaction) IsTransactionFeeFree() bool {
 	return true
 }
+
+func (account Account) IsAccountAbleToTransferAmount(transferAmount float64) bool {
+	return true
+}
