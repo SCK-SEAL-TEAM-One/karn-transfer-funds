@@ -2,7 +2,7 @@ package model
 
 import "time"
 
-type Account struct {
+type AccountModel struct {
 	ID                   int
 	Number               string
 	Name                 string
@@ -10,20 +10,20 @@ type Account struct {
 	AmountTransferPerDay float64
 }
 
-type Transaction struct {
+type TransactionModel struct {
 	ID                       int
-	SourceAccountNumber      string
-	DestinationAccountNumber string
+	SourceAccount      AccountModel
+	DestinationAccount AccountModel
 	AmountTransfer           float64
 	Fee                      float64
 	TransactionDate          time.Time
 	Status                   bool
 }
 
-func (transaction Transaction) IsTransactionFeeFree() bool {
+func (transaction TransactionModel) IsTransactionFeeFree() bool {
 	return true
 }
 
-func (account Account) IsAccountAbleToTransferAmount(transferAmount float64) bool {
+func (transaction TransactionModel) IsSourceAccountAbleToTransferAmount() bool {
 	return true
 }

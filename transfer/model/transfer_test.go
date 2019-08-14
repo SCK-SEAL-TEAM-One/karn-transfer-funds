@@ -7,7 +7,7 @@ import (
 
 func Test_IsTransactionFeeFree_By_8000_Should_Be_False(t *testing.T){
 	expected := true
-	transaction := Transaction{
+	transaction := TransactionModel{
 		AmountTransfer:           8000,
 	}
 
@@ -18,7 +18,7 @@ func Test_IsTransactionFeeFree_By_8000_Should_Be_False(t *testing.T){
 
 func Test_IsTransactionFeeFree_By_12000_Should_Be_False(t *testing.T){
 	expected := false
-	transaction := Transaction{
+	transaction := TransactionModel{
 		AmountTransfer:           12000,
 	}
 
@@ -27,20 +27,22 @@ func Test_IsTransactionFeeFree_By_12000_Should_Be_False(t *testing.T){
 	assert.Equal(t,expected,actual)
 }
 
-func Test_IsAccountAbleToTransferAmount_By_AccountBalance_10000_TransferAmount_5000_Should_Be_True(t *testing.T) {
+func Test_IsSourceAccountAbleToTransferAmount_By_SourceAccountBalance_10000_TransferAmount_5000_Should_Be_True(t *testing.T) {
 	expected := true
-	account := Account{Balance:10000}
+	sourceAccount := AccountModel{Balance:10000.00}
+	transaction := TransactionModel{SourceAccount:sourceAccount, AmountTransfer:5000.00,}
 
-	actual := account.IsAccountAbleToTransferAmount(5000)
+	actual := transaction.IsSourceAccountAbleToTransferAmount()
 
 	assert.Equal(t,expected,actual)
 }
 
-func Test_IsAccountAbleToTransferAmount_By_AccountBalance_500_TransferAmount_600_Should_Be_True(t *testing.T) {
+func Test_IsSourceAccountAbleToTransferAmount_By_SourceAccountBalance_500_TransferAmount_600_Should_Be_True(t *testing.T) {
 	expected := false
-	account := Account{Balance:500}
+	sourceAccount := AccountModel{Balance:500.00}
+	transaction := TransactionModel{SourceAccount:sourceAccount, AmountTransfer:600.00,}
 
-	actual := account.IsAccountAbleToTransferAmount(600)
+	actual := transaction.IsSourceAccountAbleToTransferAmount()
 
 	assert.Equal(t,expected,actual)
 }
