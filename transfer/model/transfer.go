@@ -16,6 +16,10 @@ type Transaction struct {
 	DestinationAccountNumber string
 	AmountTransfer           float64
 	Fee                      float64
-	TransactionDate          time.Date
+	TransactionDate          time.Time
 	Status                   bool
+}
+
+func (transaction Transaction) IsTransactionFeeFree() bool {
+	return true
 }
