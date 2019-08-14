@@ -27,3 +27,7 @@ func (transaction TransactionModel) IsTransactionFeeFree() bool {
 func (transaction TransactionModel) IsSourceAccountAbleToTransferAmount() bool {
 	return true
 }
+
+func (transaction TransactionModel) CalculateFee(){
+
+}
