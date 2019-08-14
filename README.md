@@ -60,6 +60,6 @@ HOUR, MINUTE
 ## คำสั่ง Run Test
 ### คำสั่ง Run Acceptance Test (API)
 ```
-newman run ATDD/API/e-Commerce.postman_collection.json
+newman run atdd/api/transfer.json
 ```
 
